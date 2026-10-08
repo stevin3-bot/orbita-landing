@@ -1,0 +1,30 @@
+/* Órbita's legal pages: the landing's palette, plain reading layout */
+:root{
+  --void:#0b0c0e;--panel:#171a1f;--line:#2a2e35;--bone:#ece6da;--text:#c9c4ba;--dim:#8d8a84;--signal:#ff6a2b;
+  --display:"Fraunces", Georgia, serif;--body:"Hanken Grotesk", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--void:#f4f1ea;--panel:#fffdf8;--line:#ddd6c8;--bone:#1b1a17;--text:#3b3833;--dim:#6f6a61;--signal:#c2410c}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--void);color:var(--text);font:400 16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--signal)}
+.wrap{max-width:760px;margin:0 auto;padding:40px 16px 80px}
+nav{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px;margin-bottom:40px}
+nav .brand{display:flex;align-items:center;gap:10px;color:var(--bone);text-decoration:none;font-weight:600;margin-right:auto}
+nav .brand svg{width:28px;height:28px}
+nav a:not(.brand){color:var(--dim);text-decoration:none}
+nav a[aria-current]{color:var(--bone)}
+h1{font:340 clamp(30px,6vw,42px)/1.15 var(--display);color:var(--bone);margin-bottom:8px}
+.updated{color:var(--dim);font-size:14px;margin-bottom:32px}
+.summary{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:36px}
+.summary p+p{margin-top:8px}
+h2{font:600 19px/1.35 var(--body);color:var(--bone);margin:36px 0 10px}
+p,li{margin-bottom:10px}
+ul{padding-left:22px}
+strong{color:var(--bone);font-weight:600}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--bone);font-weight:600}
+.table{overflow-x:auto}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}

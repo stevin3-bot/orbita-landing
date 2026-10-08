@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suscribirse a Órbita</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'><rect width='128' height='128' rx='28' fill='%234763e8'/><g stroke='%23fff' stroke-opacity='.55' stroke-width='6' stroke-linecap='round'><line x1='64' y1='64' x2='64' y2='30'/><line x1='64' y1='64' x2='34' y2='82'/><line x1='64' y1='64' x2='94' y2='82'/></g><circle cx='64' cy='64' r='15' fill='%23fff'/><circle cx='64' cy='28' r='10' fill='%23fff' fill-opacity='.7'/><circle cx='32' cy='84' r='10' fill='%23fff' fill-opacity='.7'/><circle cx='96' cy='84' r='10' fill='%23fff' fill-opacity='.7'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  Paddle's "default payment link": Órbita's server creates the purchase (price, early-bird discount,
+  the account it belongs to) and sends people here with ?_ptxn=txn_…; Paddle.js opens the checkout
+  for that purchase on its own. This page holds no prices and decides nothing.
+  Set PADDLE_ENV and PADDLE_TOKEN (the client-side token: public) below.
+-->
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<style>
+:root{
+  --void:#0b0c0e;--panel:#171a1f;--line:#2a2e35;--bone:#ece6da;--text:#c9c4ba;--dim:#8d8a84;--signal:#ff6a2b;--go:#4fd1a5;
+  --display:"Fraunces", Georgia, serif;--body:"Hanken Grotesk", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--void:#f4f1ea;--panel:#fffdf8;--line:#ddd6c8;--bone:#1b1a17;--text:#3b3833;--dim:#7a756c}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:var(--void);color:var(--text);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+.card{width:100%;max-width:440px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:32px 28px;text-align:center}
+.logo{width:48px;height:48px;margin:0 auto 18px}
+h1{font:340 28px/1.2 var(--display);color:var(--bone);margin-bottom:10px}
+p{color:var(--text)}
+.dim{color:var(--dim);font-size:13px;margin-top:16px}
+.ok{color:var(--go)}
+.spin{width:22px;height:22px;margin:18px auto 0;border:2px solid var(--line);border-top-color:var(--signal);border-radius:50%;animation:s .8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main class="card">
+  <svg class="logo" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="28" fill="#4763e8"/><g stroke="#fff" stroke-opacity=".55" stroke-width="6" stroke-linecap="round"><line x1="64" y1="64" x2="64" y2="30"/><line x1="64" y1="64" x2="34" y2="82"/><line x1="64" y1="64" x2="94" y2="82"/></g><circle cx="64" cy="64" r="15" fill="#fff"/><circle cx="64" cy="28" r="10" fill="#fff" fill-opacity=".7"/><circle cx="32" cy="84" r="10" fill="#fff" fill-opacity=".7"/><circle cx="96" cy="84" r="10" fill="#fff" fill-opacity=".7"/></svg>
+
+  <section id="loading">
+    <h1>Abriendo el pago…</h1>
+    <p>Un momento: se abre el formulario seguro de Paddle.</p>
+    <div class="spin" role="status" aria-label="Cargando"></div>
+  </section>
+
+  <section id="done" hidden>
+    <h1 class="ok">¡Pago completado!</h1>
+    <p>Gracias por suscribirte. Vuelve a Órbita: se activará sola en unos segundos.</p>
+    <p class="dim">Puedes cerrar esta pestaña. Recibirás la factura en tu correo.</p>
+  </section>
+
+  <section id="closed" hidden>
+    <h1>Pago sin completar</h1>
+    <p>No se ha cobrado nada. Puedes volver a Órbita y elegir un plan de nuevo cuando quieras.</p>
+    <p class="dim"><a href="#" id="reopen">Volver a abrir el pago</a></p>
+  </section>
+
+  <section id="invalid" hidden>
+    <h1>Enlace no válido</h1>
+    <p>El pago se inicia desde Órbita: abre la app y pulsa «Suscribirme».</p>
+  </section>
+</main>
+
+<script>
+  const PADDLE_ENV = 'sandbox' // 'sandbox' while testing, 'production' at launch
+  const PADDLE_TOKEN = 'test_693c785afe19d31ba54aa5344ba'
+
+  const show = (id) => document.querySelectorAll('main section').forEach((s) => (s.hidden = s.id !== id))
+  const txn = new URLSearchParams(location.search).get('_ptxn')
+  let completed = false
+
+  if (!txn || !/^txn_[a-z0-9]+$/i.test(txn)) {
+    show('invalid')
+  } else {
+    if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox')
+    Paddle.Initialize({
+      token: PADDLE_TOKEN,
+      checkout: { settings: { displayMode: 'overlay', theme: matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark', locale: navigator.language.startsWith('es') ? 'es' : 'en' } },
+      eventCallback(event) {
+        if (event.name === 'checkout.completed') {
+          completed = true
+          show('done')
+        } else if (event.name === 'checkout.closed' && !completed) {
+          show('closed')
+        }
+      }
+    })
+    // Paddle.js opens the checkout for ?_ptxn= by itself; reopening uses the same purchase
+    document.getElementById('reopen').addEventListener('click', (e) => {
+      e.preventDefault()
+      show('loading')
+      Paddle.Checkout.open({ transactionId: txn })
+    })
+  }
+</script>
+</body>
+</html>
