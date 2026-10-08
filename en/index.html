@@ -105,7 +105,7 @@ h1{
   font-size:clamp(46px, 7.4vw, 104px);line-height:.95;letter-spacing:-.035em;
   font-variation-settings:"opsz" 144,"SOFT" 30;
 }
-h1 .old{display:block;color:var(--dim);position:relative;width:fit-content}
+h1 .old{display:block;white-space:nowrap;color:var(--dim);position:relative;width:fit-content}
 h1 .old::after{
   content:"";position:absolute;left:-4px;right:-4px;top:54%;height:.07em;background:var(--signal);
   transform:scaleX(0);transform-origin:left;animation:strike .5s cubic-bezier(.7,0,.3,1) forwards;
@@ -692,7 +692,7 @@ nav ul a.on::after{transform:scaleX(1)}
       <h1 class="in d2">
         <span class="old">One agent.</span>
         <span class="old">One task.</span>
-        <span class="old">Then you wait.</span>
+        <span class="old">You wait.</span>
         <span class="new">Not <em>anymore.</em></span>
       </h1>
       <p class="lede in d3">Órbita is your <strong>team of AI agents in one app</strong>. Say what you want, the orchestrator splits it by area and they all work at once, on the same project, in plain sight.</p>

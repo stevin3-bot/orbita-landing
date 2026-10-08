@@ -46,7 +46,7 @@ T('releases/latest" data-dl>Descargar</a>', 'releases/latest" data-dl>Download</
 # ---------- hero ----------
 T('<span class="old">Un agente.</span>', '<span class="old">One agent.</span>')
 T('<span class="old">Una tarea.</span>', '<span class="old">One task.</span>')
-T('<span class="old">Y a esperar.</span>', '<span class="old">Then you wait.</span>')
+T('<span class="old">Y a esperar.</span>', '<span class="old">You wait.</span>')
 T('<span class="new">Eso se <em>acabó.</em></span>', '<span class="new">Not <em>anymore.</em></span>')
 T('Órbita es tu <strong>equipo de agentes de IA en una sola app</strong>. Le dices qué quieres, el orquestador lo reparte por áreas y todos trabajan a la vez, en el mismo proyecto, a la vista.',
   'Órbita is your <strong>team of AI agents in one app</strong>. Say what you want, the orchestrator splits it by area and they all work at once, on the same project, in plain sight.')
