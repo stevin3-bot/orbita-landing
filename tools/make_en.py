@@ -214,9 +214,16 @@ T('<p>Para la prueba solo se cuentan minutos y días de uso, nunca el contenido 
 T('<summary>¿Qué pasa cuando termina la prueba?</summary>', '<summary>What happens when the trial ends?</summary>')
 T('<p>La app se bloquea hasta que te suscribas. No se borra nada: al pagar se desbloquea en segundos y sigues donde lo dejaste.</p>', '<p>The app locks until you subscribe. Nothing is deleted: once you pay it unlocks in seconds and you pick up where you left off.</p>')
 T('<summary>¿Funciona en Mac o Linux?</summary>', '<summary>Does it work on Mac or Linux?</summary>')
-T('<p>Por ahora en Windows. La versión para Linux está en camino.</p>', '<p>Windows for now. The Linux version is on its way.</p>')
 T('<summary>¿Puedo cancelar cuando quiera?</summary>', '<summary>Can I cancel anytime?</summary>')
 T('<p>Sí, sin permanencia.</p>', '<p>Yes, no commitment.</p>')
+
+T('<ul class="plats in d5" aria-label="Plataformas">', '<ul class="plats in d5" aria-label="Platforms">')
+T('macOS <em>próximamente</em>', 'macOS <em>coming soon</em>')
+T('<b>Windows</b><span>Windows 10 y 11 · instalador .exe</span>', '<b>Windows</b><span>Windows 10 and 11 · .exe installer</span>')
+T('<b>macOS</b><span>Estamos preparando la versión para Mac</span>', '<b>macOS</b><span>We’re preparing the Mac version</span>')
+T('<span class="soon mono">Próximamente</span>', '<span class="soon mono">Coming soon</span>')
+T('data-dl>Descargar</a>', 'data-dl>Download</a>', True)
+T('<p>Funciona en Windows y Linux. La versión para Mac está en camino.</p>', '<p>It works on Windows and Linux. The Mac version is on its way.</p>')
 
 # ---------- closing + footer ----------
 T('08 — Despegue', '08 — Liftoff')
