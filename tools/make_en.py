@@ -24,7 +24,7 @@ def T(es, en, all_=False):
     s = s.replace(es, en) if all_ else s.replace(es, en, 1)
 
 # ---------- head, paths, switch ----------
-T('<html lang="es">', '<html lang="en">')
+T('<html lang="es" data-launch="soon">', '<html lang="en" data-launch="soon">')
 T('<title>Órbita — tu equipo de agentes de IA</title>', '<title>Órbita — your team of AI agents</title>')
 T('content="Órbita reparte tu petición entre varios agentes de IA que trabajan a la vez, en una sola ventana. 7 días gratis."', 'content="Órbita splits your request among several AI agents that work at once, in one window. 7 days free."')
 T('<link rel="alternate" hreflang="es" href="./">\n<link rel="alternate" hreflang="en" href="en/">', '<link rel="alternate" hreflang="es" href="../">\n<link rel="alternate" hreflang="en" href="./">')
@@ -41,7 +41,7 @@ T('<li><a href="#ia">Tu IA</a></li>', '<li><a href="#ia">Your AI</a></li>')
 T('<li><a href="#equipo">Equipo</a></li>', '<li><a href="#equipo">Team</a></li>')
 T('<li><a href="#precio">Precio</a></li>', '<li><a href="#precio">Pricing</a></li>')
 T('<li><a href="#faq">Preguntas</a></li>', '<li><a href="#faq">FAQ</a></li>')
-T('releases/latest">Descargar</a>', 'releases/latest">Download</a>')
+T('releases/latest" data-dl>Descargar</a>', 'releases/latest" data-dl>Download</a>')
 
 # ---------- hero ----------
 T('<span class="old">Un agente.</span>', '<span class="old">One agent.</span>')
@@ -129,16 +129,18 @@ T('<span>juego F1 / Frontend</span><span class="ap-dev">▶ Iniciar Dev</span><s
   '<span>f1-game / Frontend</span><span class="ap-dev">▶ Start Dev</span><span class="ap-tool">Orchestrator</span><span class="ap-tool">Collaborate</span>')
 T('<div class="ap-user">Añade el contador de vueltas al HUD</div>', '<div class="ap-user">Add the lap counter to the HUD</div>')
 T('<div class="ap-step"><span>Editar</span>', '<div class="ap-step"><span>Edit</span>')
+
 T('<div class="ap-reply">Contador con un destello al cruzar la meta.</div>', '<div class="ap-reply">Counter with a flash when crossing the line.</div>')
 T('<div class="ap-turn">Cambios de este turno · 1 archivo</div>', '<div class="ap-turn">Changes in this turn · 1 file</div>')
 T('<span>Mensaje para Claude Code…</span><b>Enviar</b>', '<span>Message Claude Code…</span><b>Send</b>')
 T('<span id="themeName">Grafito</span> · se aplica al instante y se guarda solo', '<span id="themeName">Graphite</span> · applied at once and saved automatically')
-T('<dt class="mono">Memoria del proyecto</dt><dd>Instrucciones que leen los agentes (', '<dt class="mono">Project memory</dt><dd>Instructions the agents read (')
-T('<dt class="mono">Servidores MCP y skills</dt><dd>Añade herramientas probadas con 1 clic, o las tuyas.</dd>', '<dt class="mono">MCP servers and skills</dt><dd>Add proven tools in one click, or your own.</dd>')
-T('<dt class="mono">Plantillas</dt><dd>Guarda tus mensajes y reúsalos escribiendo <code>/</code>.</dd>', '<dt class="mono">Templates</dt><dd>Save your messages and reuse them by typing <code>/</code>.</dd>')
-T('<dt class="mono">Dictar por voz</dt><dd>El texto se escribe mientras hablas, con Whisper en tu equipo.</dd>', '<dt class="mono">Voice dictation</dt><dd>The text is written as you speak, with Whisper on your computer.</dd>')
-T('<dt class="mono">Idioma</dt><dd>Español o inglés, también en las respuestas del orquestador.</dd>', '<dt class="mono">Language</dt><dd>Spanish or English, the orchestrator’s answers too.</dd>')
-T('<dt class="mono">Orquestador automático</dt><dd>Tu agente preferido si puede; si no, Claude Haiku, OpenCode gratuito o Antigravity.</dd>', '<dt class="mono">Automatic orchestrator</dt><dd>Your preferred agent if it can; else Claude Haiku, free OpenCode or Antigravity.</dd>')
+
+T('<b>Memoria del proyecto</b><span>AGENTS.md y CLAUDE.md</span>', '<b>Project memory</b><span>AGENTS.md and CLAUDE.md</span>')
+T('<b>MCP y skills</b><span>Herramientas con 1 clic</span>', '<b>MCP and skills</b><span>Tools in one click</span>')
+T('<b>Plantillas</b><span>Tus mensajes, con /</span>', '<b>Templates</b><span>Your messages, with /</span>')
+T('<b>Dictar por voz</b><span>Whisper en tu equipo</span>', '<b>Voice dictation</b><span>Whisper on your computer</span>')
+T('<b>Idioma</b><span>Español o inglés</span>', '<b>Language</b><span>Spanish or English</span>')
+T('<b>Orquestador automático</b><span>Elige el agente por ti</span>', '<b>Automatic orchestrator</b><span>Picks the agent for you</span>')
 
 # ---------- window ----------
 T('04 — La ventana', '04 — The window')
